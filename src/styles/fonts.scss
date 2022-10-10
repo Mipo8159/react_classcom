@@ -1,0 +1,58 @@
+$font-raleway: "Raleway";
+$font-roboto: "Roboto";
+$font-roboto-concensed: "Roboto Condensed";
+$font-source-sans-source: "Source Sans Pro";
+
+// RALEWAY
+@font-face {
+  font-family: $font-raleway;
+  font-weight: 700;
+  src: url("../assets/fonts/Raleway/Raleway-Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: $font-raleway;
+  font-weight: 600;
+  src: url("../assets/fonts/Raleway/Raleway-SemiBold.ttf") format("truetype");
+}
+@font-face {
+  font-family: $font-raleway;
+  font-weight: 500;
+  src: url("../assets/fonts/Raleway/Raleway-Medium.ttf") format("truetype");
+}
+@font-face {
+  font-family: $font-raleway;
+  font-weight: 400;
+  src: url("../assets/fonts/Raleway/Raleway-Regular.ttf") format("truetype");
+}
+
+// ROBOTO
+@font-face {
+  font-family: $font-roboto;
+  src: url("../assets/fonts/Roboto/Roboto-Regular.ttf") format("truetype");
+}
+
+// ROBOTO CONDENCED
+@font-face {
+  font-family: $font-roboto-concensed;
+  src: url("../assets/fonts/RobotoCondensed/RobotoCondensed-Bold.ttf")
+    format("truetype");
+}
+
+.font-raleway {
+  font-family: $font-raleway;
+}
+
+.font-roboto {
+  font-family: $font-roboto;
+}
+
+.font-roboto-condenced {
+  font-family: $font-roboto-concensed;
+}
+
+// SOURCE SANS PRO
+@font-face {
+  font-family: $font-source-sans-source;
+  src: url("../assets/fonts/SourceSansPro/SourceSansPro-Regular.ttf")
+    format("truetype");
+}

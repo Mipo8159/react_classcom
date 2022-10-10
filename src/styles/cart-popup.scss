@@ -1,0 +1,249 @@
+.cart-popup {
+  width: 325px;
+  max-height: 675px;
+
+  position: absolute;
+  right: -30px;
+  top: 101%;
+
+  display: none;
+  flex-direction: column;
+  padding: 32px 16px;
+  gap: 32px;
+  background-color: white;
+  z-index: 10;
+
+  &.active {
+    display: flex;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
+  }
+}
+
+.cart-popup-box {
+  max-height: 425px;
+  overflow: scroll;
+}
+
+.cart-title {
+  display: flex;
+  font-size: 16px;
+  font-family: $font-raleway;
+  align-items: center;
+
+  h3 {
+    font-weight: 700;
+    text-transform: capitalize;
+  }
+  span {
+    padding-top: 3px;
+    padding-left: 4px;
+    font-weight: 500;
+  }
+}
+
+.cart-prop-item {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.cart-popup-text {
+  display: flex;
+  align-items: center;
+}
+
+.cart-prop-details {
+  width: 135px;
+  font-family: $font-raleway;
+  font-size: 16px;
+
+  h3 {
+    font-weight: 400;
+    margin-bottom: 12px;
+    cursor: pointer;
+  }
+
+  span {
+    font-weight: 600;
+    padding-bottom: 8px;
+    margin-left: 4px;
+  }
+}
+
+.prop-cart-empty {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.prop-attribute-box {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.prop-details-title {
+  font-size: 14px;
+}
+
+.prop-attributes {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.prop-attr-box {
+  width: 32px;
+  margin-top: -5px;
+  height: 28px;
+  display: flex;
+  font-size: 12px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $color-dark;
+  background-color: white;
+  margin-right: 8px;
+  text-transform: uppercase;
+  font-family: $font-source-sans-source;
+
+  &.active {
+    background-color: $color-dark;
+    color: white;
+  }
+}
+
+.prop-attr-box-span {
+  padding-top: 8px;
+  padding-right: 4px;
+}
+
+.prop-color-box {
+  height: 16px;
+  margin-top: -5px;
+  width: 16px;
+  margin-right: 8px;
+  cursor: pointer;
+  div {
+    height: 100%;
+    width: 100%;
+    border: 0.5px solid gray;
+  }
+  &.active {
+    border: 1px solid $color-green;
+    height: 20px;
+    width: 20px;
+    padding: 1px;
+  }
+}
+
+.prop-quantity {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  margin-left: 5px;
+
+  button {
+    background-color: white;
+    border: 1px solid #1d1f22;
+    height: 24px;
+    width: 24px;
+    font-size: 18px;
+    font-weight: 300;
+    cursor: pointer;
+  }
+  .prop-quantity-number {
+    font-family: $font-raleway;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  .prop-plus {
+    padding-top: 1px;
+  }
+  .prop-minus {
+    padding-bottom: 1px;
+  }
+}
+
+.prop-img {
+  width: 120px;
+  height: 190px;
+
+  margin-bottom: 12px;
+  margin-left: 8px;
+  position: relative;
+
+  cursor: pointer;
+
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+  .prop-remove {
+    display: none;
+  }
+
+  &:hover .prop-remove {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 16px;
+    display: block;
+    border: none;
+    background-color: transparent;
+  }
+}
+
+.cart-popup-total {
+  display: flex;
+  justify-content: space-between;
+  h3 {
+    font-family: $font-roboto;
+    text-transform: capitalize;
+    font-size: 16px;
+  }
+  span {
+    font-family: $font-raleway;
+    font-weight: 700;
+  }
+}
+
+.capacity-box {
+  width: 40px;
+}
+
+.cart-popup-buttons {
+  display: flex;
+  button {
+    height: 45px;
+    flex: 1;
+    font-family: $font-raleway;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    text-transform: uppercase;
+
+    &:first-child {
+      margin-right: 6px;
+      background: #ffffff;
+      border: 1px solid #1d1f22;
+    }
+    &:last-child {
+      margin-left: 6px;
+      background: #5ece7b;
+      color: white;
+      border: none;
+    }
+  }
+}

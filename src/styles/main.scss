@@ -1,0 +1,72 @@
+$color-green: #5ece7b;
+$color-hover: #eeeeee;
+$out-of-stock: #8d8f9a;
+$color-dark: #1d1f22;
+$color-overlay: rgba(57, 55, 72, 0.22);
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  max-width: 1240px;
+  margin: auto;
+}
+
+.outlet {
+  position: relative;
+  padding-top: 80px;
+}
+
+.outlet-cover {
+  position: absolute;
+  background-color: $color-overlay;
+  min-height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+
+  &.active {
+    display: block;
+    transition: all 2s ease;
+  }
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+  border-radius: 5px;
+}
+
+@import "fonts.scss";
+@import "navbar.scss";
+@import "product.scss";
+@import "product-details.scss";
+@import "cart-popup.scss";
+@import "cart.scss";

@@ -1,0 +1,130 @@
+.navbar {
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.line {
+  transform: scale(0);
+}
+
+.nav-color {
+  color: $color-green;
+}
+
+.nav-active {
+  color: $color-green;
+  position: relative;
+  transform: scale(1);
+  transition: all 0.3s ease;
+
+  &:before {
+    content: "";
+    background: $color-green;
+    height: 2px;
+    bottom: -30px;
+    left: -16px;
+    right: -16px;
+    position: absolute;
+  }
+}
+
+.nav-links {
+  display: flex;
+  cursor: pointer;
+
+  li {
+    padding: 10px;
+    list-style: none;
+    margin-right: 32px;
+    text-transform: uppercase;
+    font-weight: 600;
+    user-select: none;
+  }
+}
+
+.nav-currency-bar {
+  z-index: 20;
+  li {
+    list-style: none;
+    font-weight: 500;
+  }
+}
+
+.cart-box {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  position: relative;
+  font-size: 18px;
+}
+
+.brand-box {
+  margin-top: 5px;
+}
+
+.currency-box {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.cart-icon {
+  margin-left: 20px;
+  margin-top: 3px;
+  cursor: pointer;
+  position: relative;
+}
+
+.cart-icon-circle {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  font-weight: 700;
+  font-family: $font-roboto;
+  background-color: #1d1f22;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: -9px;
+  right: -13px;
+  font-size: 14px;
+  padding-left: 1px;
+  padding-top: 1px;
+}
+
+.tick {
+  margin-left: 8px;
+  margin-top: 3px;
+}
+
+.nav-currency-bar {
+  position: absolute;
+  top: 40px;
+  left: -28px;
+  width: 115px;
+  height: 170px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  background: #ffffff;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+
+  li {
+    width: 100%;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  li:hover {
+    background: $color-hover;
+    cursor: pointer;
+  }
+}

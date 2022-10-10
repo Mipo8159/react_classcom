@@ -1,7 +1,7 @@
 import React from 'react'
-import {ReactComponent as BrandIcon} from 'assets/icons/brand.svg'
-import {ReactComponent as CartIcon} from 'assets/icons/empty_cart.svg'
-import {ReactComponent as TickIcon} from 'assets/icons/chevron.svg'
+import {ReactComponent as BrandIcon} from '../../assets/icons/brand.svg'
+import {ReactComponent as CartIcon} from '../../assets/icons/empty_cart.svg'
+import {ReactComponent as TickIcon} from '../../assets/icons/chevron.svg'
 
 import CartPopup from '../cart/CartPopup'
 import {Link} from 'react-router-dom'

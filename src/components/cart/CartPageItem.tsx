@@ -3,7 +3,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {ReactComponent as ArrowIcon} from '../assets/icons/arrow.svg'
 
-class CartItem extends React.Component {
+class CartPageItem extends React.Component {
   state = {
     image: 0,
   }
@@ -61,4 +61,4 @@ class CartItem extends React.Component {
   }
 }
 
-export default CartItem
+export default CartPageItem

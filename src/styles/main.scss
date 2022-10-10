@@ -64,9 +64,10 @@ a {
   border-radius: 5px;
 }
 
-@import "fonts.scss";
-@import "navbar.scss";
-@import "product.scss";
-@import "product-details.scss";
-@import "cart-popup.scss";
-@import "cart.scss";
+@import 'fonts.scss';
+@import 'navbar.scss';
+@import 'product.scss';
+@import 'product-details.scss';
+@import 'cart-popup.scss';
+@import 'cart.scss';
+@import 'error.scss';

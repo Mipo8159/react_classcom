@@ -2,23 +2,45 @@ import React from 'react'
 import {ReactComponent as BrandIcon} from '../../assets/icons/brand.svg'
 import {ReactComponent as CartIcon} from '../../assets/icons/empty_cart.svg'
 import {ReactComponent as TickIcon} from '../../assets/icons/chevron.svg'
-
-import CartPopup from '../cart/CartPopup'
 import {Link} from 'react-router-dom'
 import {RouteEnum} from '../../router'
+import {WithRouter, WithRouterProps} from '../layout/WithRouter'
 
-export default class Navbar extends React.Component {
+interface NavbarProps extends WithRouterProps {}
+interface NavbarState {}
+
+class Navbar extends React.Component<NavbarProps, NavbarState> {
+  getColor(link: string, type: number) {
+    if (this.props.router.location.pathname.split('/')[1] === link) {
+      if (type == 1) {
+        return 'nav-active'
+      } else {
+        return 'nav-color'
+      }
+    }
+    return ''
+  }
+
   render() {
     return (
       <nav className="font-raleway navbar">
-        <CartPopup />
+        {/* <CartPopup /> */}
 
         {/* LINKS */}
         <ul className="nav-links">
-          <li onClick={() => {}} className={`nav-color`}>
-            category
-            <div className={`line nav-active`} />
-          </li>
+          <Link to={'/products'}>
+            <li onClick={() => {}} className={`${this.getColor('products', 0)}`}>
+              products
+              <div className={`line ${this.getColor('products', 1)}`} />
+            </li>
+          </Link>
+
+          <Link to={'/categories'}>
+            <li onClick={() => {}} className={`${this.getColor('categories', 0)}`}>
+              categories
+              <div className={`line ${this.getColor('categories', 1)}`} />
+            </li>
+          </Link>
         </ul>
 
         {/* LOGO */}
@@ -47,3 +69,6 @@ export default class Navbar extends React.Component {
     )
   }
 }
+
+// @ts-ignore
+export default WithRouter(Navbar)

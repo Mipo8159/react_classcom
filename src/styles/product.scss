@@ -1,25 +1,95 @@
 .products-page {
   padding-bottom: 275px;
 }
+
 .page-title {
   font-family: $font-raleway;
   font-weight: 400;
   font-size: 42px;
-  margin-bottom: 100px;
+  margin-bottom: 20px;
   text-transform: capitalize;
 }
 
 .products {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-gap: 100px 40px;
+}
+
+.hr-products {
+  margin-bottom: 35px;
+  border-bottom: 1px solid $color-dark;
+}
+
+.products-topbar {
+  display: flex;
+  height: 25px;
+  margin-bottom: 100px;
+
+  &-search {
+    width: 100%;
+    font-family: $font-raleway;
+    font-weight: 500;
+    margin-right: 25px;
+    height: 50px;
+    padding: 0 20px;
+    border: 1px solid $color-dark;
+    font-size: 16px;
+    &:focus {
+      outline: none;
+    }
+    &:hover {
+      outline: none;
+    }
+  }
+}
+
+.products-select {
+  width: 250px;
+  border: 1px solid $color-dark;
+  position: relative;
+  font-family: $font-raleway;
+  cursor: pointer;
+  font-weight: 500;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &-icon {
+    position: absolute;
+    top: 17px;
+    right: 17px;
+  }
+
+  &-bar {
+    position: absolute;
+    border: 1px solid $color-dark;
+    background-color: white;
+    top: 100%;
+    width: 101%;
+    left: -0.5%;
+    z-index: 10;
+    div {
+      padding: 12px;
+      z-index: 10;
+      display: flex;
+      justify-content: center;
+      &:hover {
+        cursor: pointer;
+        background-color: rgba(136, 136, 136, 0.2);
+      }
+    }
+  }
 }
 
 .card {
   padding: 16px;
+  border: 1px solid $color-dark;
   font-family: $font-raleway;
   color: #1d1f22;
   font-size: 18px;
+  position: relative;
 
   &:hover {
     box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
@@ -30,84 +100,57 @@
     transform: scale(1);
     transition: all 0.3s ease;
   }
+  &:hover .card-wishlist {
+    transform: scale(1);
+    transition: all 0.3s ease;
+  }
 }
 
 .card-image-box {
   position: relative;
   cursor: pointer;
-
-  margin-bottom: 21px;
+  margin-bottom: 16px;
   text-align: center;
 }
 
-.card-image-box-inner {
-  position: relative;
-  width: 356px;
-  height: 338px;
-}
-
 .card-image {
-  margin-bottom: 24px;
-  height: 100%;
-}
-
-.out-stock-div {
-  .card-layer {
-    position: absolute;
-    background: white;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    opacity: 0.5;
-  }
-
-  .card-image-box {
-    background: #ffffff;
-  }
-
-  .card-cart {
-    opacity: 0.5;
-  }
-
-  .out-of-stock {
-    color: #8d8f9a;
-    display: block;
-  }
-
-  .card-price {
-    color: #8d8f9a;
-  }
-  .card-name {
-    color: #8d8f9a;
-  }
-}
-
-.out-of-stock {
-  position: absolute;
-  display: none;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  color: $out-of-stock;
-  text-transform: uppercase;
-  font-size: 24px;
-  font-weight: 400;
+  object-fit: contain;
+  width: 100%;
+  height: 250px;
 }
 
 .card-cart {
   background-color: $color-green;
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
+  padding-right: 2px;
   position: absolute;
-  right: 16px;
-  bottom: 2px;
+  right: 15px;
+  bottom: 15px;
   transform: scale(0);
   cursor: pointer;
+}
+
+.card-wishlist {
+  background-color: $color-red;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 65px;
+  bottom: 15px;
+  transform: scale(0);
+  cursor: pointer;
+  svg {
+    height: 20px;
+    width: 20px;
+    fill: white;
+  }
 }
 
 .card-name {

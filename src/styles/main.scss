@@ -1,8 +1,10 @@
 $color-green: #5ece7b;
+$color-red: #dd7577;
 $color-hover: #eeeeee;
 $out-of-stock: #8d8f9a;
 $color-dark: #1d1f22;
 $color-overlay: rgba(57, 55, 72, 0.22);
+$color-dark: rgba(0, 0, 0, 0.2);
 
 * {
   padding: 0;
@@ -71,3 +73,4 @@ a {
 @import 'cart-popup.scss';
 @import 'cart.scss';
 @import 'error.scss';
+@import 'category.scss';

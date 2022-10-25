@@ -1,7 +1,28 @@
-import React, {Component} from 'react'
+import React from 'react'
+import {CategoryType} from '../../types/category.type'
+import {Link} from 'react-router-dom'
 
-export default class CategoryCard extends Component {
+interface CategoryCardProps {
+  category: CategoryType
+}
+interface CategoryCardState {}
+
+class CategoryCard extends React.Component<CategoryCardProps, CategoryCardState> {
   render() {
-    return <div>CategoryCard</div>
+    const {category} = this.props
+    return (
+      <Link to={`/categories/${category._id}`}>
+        <div className="category-card">
+          <img src={category.image.imgUrl} alt={category.title} />
+
+          <div className="category-innerbox">
+            <h3>{category.title}</h3>
+            <p>{category.body}</p>
+          </div>
+        </div>
+      </Link>
+    )
   }
 }
+
+export default CategoryCard

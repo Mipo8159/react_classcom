@@ -1,0 +1,40 @@
+.category {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 100px 20px;
+}
+
+.hr-categories {
+  margin-bottom: 50px;
+  border-bottom: 1px solid $color-dark;
+}
+
+.category-card {
+  width: 300px;
+  position: relative;
+  cursor: pointer;
+
+  img {
+    width: 100%;
+  }
+
+  .category-innerbox {
+    position: absolute;
+    background-color: white;
+    top: 160px;
+    text-align: center;
+    width: 220px;
+    left: 40px;
+    padding: 15px 15px;
+
+    h3 {
+      font-family: $font-raleway;
+      font-size: 18px;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+    p {
+      font-family: $font-raleway;
+    }
+  }
+}

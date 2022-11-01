@@ -3,9 +3,19 @@ import {ReactComponent as CartIcon} from '../../assets/icons/card_empty_cart.svg
 import {ReactComponent as HeartIcon} from '../../assets/icons/heart.svg'
 import {ProductType} from '../../types/product.type'
 import {Link} from 'react-router-dom'
+import {AppDispatch, AppState} from '../../store/store'
+import {connect} from 'react-redux'
+import {WishlistState} from '../../store/wishlist/types/wishlist.state'
+import {CartState} from '../../store/cart/types/cart.state'
+import {addToWishlist} from '../../store/wishlist/wishlist.reducer'
+import {addToCart} from '../../store/cart/cart.reducer'
+import {inStore} from '../../utils/util'
 
 interface ProductCardProps {
   product: ProductType
+  wishlist: WishlistState
+  cart: CartState
+  dispatch: AppDispatch
 }
 interface ProductCardState {}
 
@@ -23,21 +33,36 @@ class ProductCard extends React.Component<ProductCardProps, ProductCardState> {
           </div>
         </Link>
 
-        <Link to={`products/${product._id}`}>
+        <Link to={`/products/${product._id}`}>
           <div>
             <p className="card-name">brand {product.brand}</p>
             <span className="card-price">{product.price}$</span>
           </div>
         </Link>
 
-        <div className={`card-wishlist`}>
+        <div
+          onClick={() => this.props.dispatch(addToWishlist(product))}
+          className={`card-wishlist ${inStore(this.props.wishlist.wish, product._id) ? 'disabled' : ''}`}
+        >
           <HeartIcon />
         </div>
-        <div className={`card-cart`}>
+        <div
+          onClick={() => this.props.dispatch(addToCart(product))}
+          className={`card-cart ${inStore(this.props.cart.cart, product._id) ? 'disabled' : ''}`}
+        >
           <CartIcon />
         </div>
       </div>
     )
   }
 }
-export default ProductCard
+
+const mapStateToProps = (state: AppState) => ({
+  cart: state.cart,
+  wishlist: state.wishlist,
+})
+const mapDispatchToProps = (dispatch: AppDispatch) => ({
+  dispatch,
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductCard)

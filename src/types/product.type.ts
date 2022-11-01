@@ -13,4 +13,5 @@ export type ProductType = {
   categories: CategoryType[]
   createdAt: string
   updatedAt: string
+  quantity: number
 }

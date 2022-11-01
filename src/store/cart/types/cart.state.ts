@@ -1,5 +1,7 @@
+import {ProductType} from '../../../types/product.type'
+
 export type CartState = {
   isOpen: boolean
-  cart: []
+  cart: ProductType[]
   total: number
 }

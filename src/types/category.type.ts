@@ -1,3 +1,5 @@
+import {ProductType} from './product.type'
+
 export type CategoryType = {
   _id: string
   title: string
@@ -9,7 +11,7 @@ export type CategoryType = {
     createdAt: string
     updatedAt: string
   }
-  products: string[]
+  products: ProductType[]
   createdAt: string
   updatedAt: string
 }

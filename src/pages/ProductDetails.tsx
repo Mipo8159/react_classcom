@@ -1,28 +1,57 @@
 import React from 'react'
+import {connect} from 'react-redux'
 import {ReactComponent as CartIcon} from '../assets/icons/card_empty_cart.svg'
 import {ReactComponent as HeartIcon} from '../assets/icons/heart.svg'
+import {WithRouter, WithRouterProps} from '../components/layout/WithRouter'
+import {getProduct} from '../store/product/product.actions'
+import {ProductState} from '../store/product/types/product.state'
+import {AppDispatch, AppState} from '../store/store'
+import {ProductType} from '../types/product.type'
+import parse from 'html-react-parser'
 
-class ProductDetails extends React.Component {
+interface ProductDetailsProps extends WithRouterProps {
+  product: ProductState
+  dispatch: AppDispatch
+}
+interface ProductDetailsState {
+  image: number
+  product: ProductType
+}
+
+class ProductDetails extends React.Component<ProductDetailsProps, ProductDetailsState> {
   state = {
     image: 0,
-    product: {},
+    product: {} as ProductType,
+  }
+
+  componentDidMount(): void {
+    this.props.dispatch(getProduct(this.props.router.params.id!))
   }
 
   render() {
+    const {title, rating, gallery, brand, price, description} = this.props.product.product
+
     return (
       <div className="detailed-page">
         <div className="product-details">
           {/* GALLERY */}
           <div className="gallery">
             <div className="small-img-box">
-              <div className="small-img">
-                <img src={''} alt="small gallery" />
-              </div>
+              {gallery &&
+                gallery.map((g, idx) => (
+                  <div
+                    key={g._id}
+                    onClick={() => this.setState({image: idx})}
+                    className={`img-border small-img ${this.state.image === idx ? 'active-img-border' : ''}`}
+                  >
+                    <img src={g.imgUrl} alt="small gallery" />
+                  </div>
+                ))}
             </div>
 
-            <div className="big-img-box">
+            <div className="big-img-box img-border">
               <div className="big-img">
-                <img src={''} alt="big gallery" />
+                <img src={gallery && gallery[this.state.image].imgUrl} alt="big gallery" />
               </div>
             </div>
           </div>
@@ -31,14 +60,14 @@ class ProductDetails extends React.Component {
           <div className="details">
             {/* HEADER */}
             <div className="header">
-              <h1>brand</h1>
-              <h3>name</h3>
+              <h1>{brand}</h1>
+              <h3>{title}</h3>
             </div>
 
             {/* PRICE */}
             <div className="details-price-box">
               <h3 className="details-price-title">price:</h3>
-              <span className="details-price">200$</span>
+              <span className="details-price">{price}$</span>
             </div>
 
             {/* ADD TO CART */}
@@ -61,7 +90,7 @@ class ProductDetails extends React.Component {
             </div>
 
             {/* DESCRIPTION */}
-            <div className="details-description">description</div>
+            <div className="details-description">{description && parse(description)}</div>
           </div>
         </div>
       </div>
@@ -69,4 +98,12 @@ class ProductDetails extends React.Component {
   }
 }
 
-export default ProductDetails
+const mapStateToProps = (state: AppState) => ({
+  product: state.product,
+})
+const mapDispatachToProp = (dispatch: AppDispatch) => ({
+  dispatch,
+})
+
+// @ts-ignore
+export default WithRouter(connect(mapStateToProps, mapDispatachToProp)(ProductDetails))

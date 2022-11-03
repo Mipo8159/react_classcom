@@ -6,30 +6,41 @@ import {WithRouter, WithRouterProps} from '../components/layout/WithRouter'
 import {getProduct} from '../store/product/product.actions'
 import {ProductState} from '../store/product/types/product.state'
 import {AppDispatch, AppState} from '../store/store'
-import {ProductType} from '../types/product.type'
 import parse from 'html-react-parser'
+import {addToWishlist} from '../store/wishlist/wishlist.reducer'
+import {addToCart} from '../store/cart/cart.reducer'
+import {FaStar} from 'react-icons/fa'
+import {inStore} from '../utils/util'
+import {CartState} from '../store/cart/types/cart.state'
+import {WishlistState} from '../store/wishlist/types/wishlist.state'
 
 interface ProductDetailsProps extends WithRouterProps {
   product: ProductState
+  cart: CartState
+  wishlist: WishlistState
   dispatch: AppDispatch
 }
 interface ProductDetailsState {
   image: number
-  product: ProductType
 }
 
 class ProductDetails extends React.Component<ProductDetailsProps, ProductDetailsState> {
   state = {
     image: 0,
-    product: {} as ProductType,
   }
 
   componentDidMount(): void {
     this.props.dispatch(getProduct(this.props.router.params.id!))
   }
 
+  componentDidUpdate(prevProps: ProductDetailsProps, _: ProductDetailsState): void {
+    if (prevProps.product.product._id !== this.props.router.params.id) {
+      this.props.dispatch(getProduct(this.props.router.params.id!))
+    }
+  }
+
   render() {
-    const {title, rating, gallery, brand, price, description} = this.props.product.product
+    const {_id, title, rating, gallery, brand, price, description} = this.props.product.product
 
     return (
       <div className="detailed-page">
@@ -66,14 +77,25 @@ class ProductDetails extends React.Component<ProductDetailsProps, ProductDetails
 
             {/* PRICE */}
             <div className="details-price-box">
-              <h3 className="details-price-title">price:</h3>
               <span className="details-price">{price}$</span>
+
+              <div className="rating-box">
+                {[...Array(5).keys()].map((s) => (
+                  <div key={s} className={`mx-3 rating ${rating > s ? 'active' : ''}`}>
+                    <FaStar />
+                  </div>
+                ))}
+              </div>
             </div>
 
             {/* ADD TO CART */}
             <div className={`details-cart`}>
-              <button>
-                add to cart
+              <button
+                onClick={() => this.props.dispatch(addToCart(this.props.product.product))}
+                disabled={inStore(this.props.cart.cart, _id)}
+                className={`${inStore(this.props.cart.cart, _id) ? 'disabled' : ''}`}
+              >
+                {inStore(this.props.cart.cart, _id) ? 'already in cart' : 'add to cart'}
                 <div>
                   <CartIcon />
                 </div>
@@ -81,8 +103,12 @@ class ProductDetails extends React.Component<ProductDetailsProps, ProductDetails
             </div>
 
             <div className={`details-wishlist`}>
-              <button>
-                add to wishlist
+              <button
+                onClick={() => this.props.dispatch(addToWishlist(this.props.product.product))}
+                disabled={inStore(this.props.wishlist.wish, _id)}
+                className={`${inStore(this.props.wishlist.wish, _id) ? 'disabled' : ''}`}
+              >
+                {inStore(this.props.wishlist.wish, _id) ? 'already in wishlist' : 'add to wishlist'}
                 <div>
                   <HeartIcon />
                 </div>
@@ -100,6 +126,8 @@ class ProductDetails extends React.Component<ProductDetailsProps, ProductDetails
 
 const mapStateToProps = (state: AppState) => ({
   product: state.product,
+  cart: state.cart,
+  wishlist: state.wishlist,
 })
 const mapDispatachToProp = (dispatch: AppDispatch) => ({
   dispatch,

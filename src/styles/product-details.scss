@@ -256,3 +256,16 @@
     margin-bottom: 8px;
   }
 }
+
+.rating-box {
+  display: flex;
+  margin-top: 15px;
+
+  .rating {
+    margin-right: 10px;
+  }
+
+  .active {
+    color: gold;
+  }
+}

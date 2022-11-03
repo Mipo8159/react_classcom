@@ -6,6 +6,7 @@ import Categories from '../pages/Categories'
 import CategoryDetails from '../pages/CategoryDetails'
 import ProductDetails from '../pages/ProductDetails'
 import Products from '../pages/Products'
+import Wishlist from '../pages/Wishlist'
 
 class AppRouter extends React.Component {
   render() {
@@ -24,6 +25,7 @@ class AppRouter extends React.Component {
           </Route>
 
           <Route path="cart" element={<Cart />} />
+          <Route path="wishlist" element={<Wishlist />} />
           <Route path="*" element={<Navigate replace to={'/error'} />} />
         </Route>
       </Routes>

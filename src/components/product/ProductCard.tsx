@@ -35,7 +35,7 @@ class ProductCard extends React.Component<ProductCardProps, ProductCardState> {
 
         <Link to={`/products/${product._id}`}>
           <div>
-            <p className="card-name">brand {product.brand}</p>
+            <p className="card-name">{product.title}</p>
             <span className="card-price">{product.price}$</span>
           </div>
         </Link>

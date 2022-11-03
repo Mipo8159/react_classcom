@@ -1,40 +1,77 @@
-import React, {Component} from 'react'
+import {Dispatch} from '@reduxjs/toolkit'
+import React from 'react'
+import {connect} from 'react-redux'
+import {decrement, handleCart, increment, removeFromCart} from '../../store/cart/cart.reducer'
+import {CartState} from '../../store/cart/types/cart.state'
+import {AppDispatch, AppState} from '../../store/store'
+import {ProductType} from '../../types/product.type'
+import {WithRouter, WithRouterProps} from '../layout/WithRouter'
+import {FaTimes} from 'react-icons/fa'
 
-class CartPopupItem extends Component {
+interface CartPropItemProps extends WithRouterProps {
+  cartItem: ProductType
+  cart: CartState
+  dispatch: Dispatch
+}
+
+class CartPopupItem extends React.Component<CartPropItemProps> {
   render() {
     return (
       <div className="cart-prop-item">
-        {/* 1-ST LAYER */}
+        <button
+          className="prop-remove"
+          onClick={(e) => {
+            e.stopPropagation()
+            this.props.dispatch(removeFromCart(this.props.cartItem._id))
+          }}
+        >
+          <FaTimes />
+        </button>
+
         <div className="cart-prop-details">
           {/* title */}
-          <h3 onClick={() => {}}>item</h3>
-
-          {/* prices */}
-          <span>200$</span>
-        </div>
-
-        {/* 2-ND LAYER */}
-        <div className="prop-quantity">
-          <button className="prop-plus">+</button>
-          <span className="prop-quantity-number">4</span>
-          <button className="prop-minus">-</button>
-        </div>
-
-        {/* 3-RD LAYER */}
-        <div className="prop-img" onClick={() => {}}>
-          <img src={''} alt="cart popup" />
-
-          <button
-            className="prop-remove"
-            onClick={(e) => {
-              e.stopPropagation()
+          <h3
+            onClick={() => {
+              this.props.dispatch(handleCart(false))
+              this.props.router.navigate(`/products/${this.props.cartItem._id}`)
             }}
           >
-            X
+            {this.props.cartItem.title}
+          </h3>
+          <p>{this.props.cartItem.body}$</p>
+          <span> {this.props.cartItem.price}$</span>
+        </div>
+
+        <div className="prop-quantity">
+          <button onClick={() => this.props.dispatch(increment(this.props.cartItem._id))} className="prop-plus">
+            +
           </button>
+          <span className="prop-quantity-number">{this.props.cartItem.quantity}</span>
+          <button onClick={() => this.props.dispatch(decrement(this.props.cartItem._id))} className="prop-minus">
+            -
+          </button>
+        </div>
+
+        <div
+          className="prop-img"
+          onClick={() => {
+            this.props.dispatch(handleCart(false))
+            this.props.router.navigate(`/products/${this.props.cartItem._id}`)
+          }}
+        >
+          <img src={this.props.cartItem.gallery[0].imgUrl} alt="cart popup" />
         </div>
       </div>
     )
   }
 }
-export default CartPopupItem
+
+const mapStateToProps = (state: AppState) => ({
+  cart: state.cart,
+})
+const mapDispatchToProps = (dispatch: AppDispatch) => ({
+  dispatch,
+})
+
+// @ts-ignore
+export default connect(mapStateToProps, mapDispatchToProps)(WithRouter(CartPopupItem))

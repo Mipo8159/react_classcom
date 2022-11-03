@@ -1,15 +1,37 @@
 import React from 'react'
+import {connect} from 'react-redux'
 import AppRouter from './router/AppRouter'
+import {handleCart, setCartOnLoad} from './store/cart/cart.reducer'
+import {CartState} from './store/cart/types/cart.state'
+import {AppDispatch, AppState} from './store/store'
+import {setWishlistOnLoad} from './store/wishlist/wishlist.reducer'
 import './styles/main.scss'
 
-class App extends React.Component {
+interface AppPropsInterface {
+  cart: CartState
+  dispatch: AppDispatch
+}
+interface AppStateInterface {}
+
+class App extends React.Component<AppPropsInterface, AppStateInterface> {
+  componentDidMount() {
+    this.props.dispatch(
+      setCartOnLoad(JSON.parse(localStorage.getItem('cart')!) ? JSON.parse(localStorage.getItem('cart')!) : [])
+    )
+    this.props.dispatch(
+      setWishlistOnLoad(JSON.parse(localStorage.getItem('wish')!) ? JSON.parse(localStorage.getItem('wish')!) : [])
+    )
+  }
+
   render() {
     return (
       <div
-        onClick={() => {}}
+        onClick={() => {
+          this.props.dispatch(handleCart(false))
+        }}
         style={{
           height: '100vh',
-          // overflowY: `${this.props.state.cart.isOpen ? 'hidden' : 'scroll'}`,
+          overflowY: `${this.props.cart.isOpen ? 'hidden' : 'scroll'}`,
         }}
       >
         <AppRouter />
@@ -18,4 +40,10 @@ class App extends React.Component {
   }
 }
 
-export default App
+const mapStateToProps = (state: AppState) => ({
+  cart: state.cart,
+})
+const mapDispatchToProps = (dispatch: AppDispatch) => ({
+  dispatch,
+})
+export default connect(mapStateToProps, mapDispatchToProps)(App)

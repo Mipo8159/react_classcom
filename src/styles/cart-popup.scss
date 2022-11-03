@@ -1,7 +1,6 @@
 .cart-popup {
   width: 325px;
   max-height: 675px;
-
   position: absolute;
   right: -30px;
   top: 101%;
@@ -50,7 +49,34 @@
 
 .cart-prop-item {
   display: flex;
-  margin-bottom: 30px;
+  position: relative;
+  margin-bottom: 20px;
+  padding: 5px 8px;
+  border: 1px solid rgba(128, 128, 128, 0.05);
+  box-shadow: 2px 2px 4px rgba(128, 128, 128, 0.2);
+
+  .prop-remove {
+    display: none;
+  }
+
+  &:hover .prop-remove {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    height: 18px;
+    weight: 10px;
+    font-weight: 600;
+    font-size: 18px;
+    cursor: pointer;
+    display: block;
+    z-index: 100;
+    border: none;
+    background-color: transparent;
+
+    &:hover {
+      color: $color-red;
+    }
+  }
 }
 
 .cart-popup-text {
@@ -59,14 +85,24 @@
 }
 
 .cart-prop-details {
-  width: 135px;
+  width: 125px;
+  margin-right: 5px;
   font-family: $font-raleway;
   font-size: 16px;
 
   h3 {
     font-weight: 400;
-    margin-bottom: 12px;
+    padding: 0;
+    margin-bottom: 5px;
     cursor: pointer;
+    padding: 10px 5px;
+  }
+
+  p {
+    font-weight: 400;
+    padding-bottom: 12px;
+    font-family: $font-raleway;
+    margin-left: 4px;
   }
 
   span {
@@ -85,64 +121,8 @@
   width: 100%;
 }
 
-.prop-attribute-box {
-  margin-top: 12px;
-  display: flex;
-  flex-direction: column-reverse;
-}
-
 .prop-details-title {
   font-size: 14px;
-}
-
-.prop-attributes {
-  display: flex;
-  align-items: center;
-  margin-bottom: 12px;
-}
-
-.prop-attr-box {
-  width: 32px;
-  margin-top: -5px;
-  height: 28px;
-  display: flex;
-  font-size: 12px;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid $color-dark;
-  background-color: white;
-  margin-right: 8px;
-  text-transform: uppercase;
-  font-family: $font-source-sans-source;
-
-  &.active {
-    background-color: $color-dark;
-    color: white;
-  }
-}
-
-.prop-attr-box-span {
-  padding-top: 8px;
-  padding-right: 4px;
-}
-
-.prop-color-box {
-  height: 16px;
-  margin-top: -5px;
-  width: 16px;
-  margin-right: 8px;
-  cursor: pointer;
-  div {
-    height: 100%;
-    width: 100%;
-    border: 0.5px solid gray;
-  }
-  &.active {
-    border: 1px solid $color-green;
-    height: 20px;
-    width: 20px;
-    padding: 1px;
-  }
 }
 
 .prop-quantity {
@@ -150,6 +130,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  padding: 18px 0;
   margin-bottom: 12px;
   margin-left: 5px;
 
@@ -178,32 +159,15 @@
 .prop-img {
   width: 120px;
   height: 190px;
-
-  margin-bottom: 12px;
-  margin-left: 8px;
+  margin-left: 12px;
   position: relative;
-
+  border: 1px solid rgba(128, 128, 128, 0.05);
   cursor: pointer;
 
   img {
     height: 100%;
     width: 100%;
     object-fit: contain;
-  }
-  .prop-remove {
-    display: none;
-  }
-
-  &:hover .prop-remove {
-    position: absolute;
-    right: 5px;
-    top: 5px;
-    font-weight: 600;
-    cursor: pointer;
-    font-size: 16px;
-    display: block;
-    border: none;
-    background-color: transparent;
   }
 }
 

@@ -63,13 +63,14 @@ class Navbar extends React.Component<NavbarProps, NavbarState> {
 
         {/* CART / WISHLIST */}
         <div className="side_part">
-          <div className="wishlist-box">
+          <div onClick={() => this.props.router.navigate('/wishlist')} className="wishlist-box">
             <HeartIcon />
             {this.props.wishlist.wish.length > 0 && <div className="icon-circle">{this.props.wishlist.wish.length}</div>}
           </div>
 
           <div
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation()
               this.props.dispatch(handleCart(!this.props.cart.isOpen))
             }}
             className="cart-box"

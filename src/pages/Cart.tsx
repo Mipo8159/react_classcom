@@ -64,7 +64,7 @@ class Cart extends React.Component<CartPropsInterface, CartStateInterface> {
 
           <div>
             <h3>{this.state.tax.toFixed(2)}$</h3>
-            <h3>{this.state.totalQuantity}</h3>
+            <h3>{this.state.totalQuantity + this.state.tax}</h3>
             <h3>{this.props.cart.total.toFixed(2)}$</h3>
           </div>
         </div>

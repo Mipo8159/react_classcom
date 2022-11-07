@@ -4,6 +4,21 @@ import {ProductsRequestInterface} from './request/productsRequest.interface'
 import {ProductsResponseInterface} from './response/productsResponse.interface'
 
 // GET PRODUCTS
+export const searchProducts = createAsyncThunk('searchProducts', async (search: string, thunkApi) => {
+  try {
+    const res = await $api.get<ProductsResponseInterface>('/products/search', {
+      params: {
+        search,
+      },
+    })
+
+    return thunkApi.fulfillWithValue(res.data.data.products)
+  } catch (error) {
+    return thunkApi.rejectWithValue('products not found')
+  }
+})
+
+// GET PRODUCTS
 export const getProducts = createAsyncThunk('getProducts', async (request: ProductsRequestInterface, thunkApi) => {
   try {
     const res = await $api.get<ProductsResponseInterface>('/products', {

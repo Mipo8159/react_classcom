@@ -23,7 +23,7 @@ class CategoryDetails extends Component<CategoryDetailsProps, CategoryDetailsSta
 
   render() {
     return (
-      <div>
+      <div className="category-details">
         <h1 className="page-title"> {this.props.category.category.title}</h1>
         <div className="hr-categories" />
         {this.renderProducts()}

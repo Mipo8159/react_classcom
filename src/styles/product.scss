@@ -13,7 +13,7 @@
 .products {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 100px 40px;
+  grid-gap: 40px 40px;
 }
 
 .hr-products {
@@ -30,11 +30,19 @@
     width: 100%;
     font-family: $font-raleway;
     font-weight: 500;
-    margin-right: 25px;
+    margin-right: 39px;
     height: 50px;
-    padding: 0 20px;
     border: 1px solid $color-dark;
-    font-size: 16px;
+    position: relative;
+
+    input {
+      width: 100%;
+      padding: 0 20px;
+      height: 100%;
+      font-size: 16px;
+      border: none;
+      outline: none;
+    }
     &:focus {
       outline: none;
     }
@@ -45,7 +53,7 @@
 }
 
 .products-select {
-  width: 250px;
+  width: 378px;
   border: 1px solid $color-dark;
   position: relative;
   font-family: $font-raleway;

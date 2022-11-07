@@ -5,6 +5,6 @@ export interface ProductPagination {
   meta: {
     page: number
     lastPage: number
-    total: number
+    count: number
   }
 }

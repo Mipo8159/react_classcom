@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {clearCart} from '../../store/cart/cart.reducer'
+import {clearCart, handleCart} from '../../store/cart/cart.reducer'
 import {CartState} from '../../store/cart/types/cart.state'
 import {AppDispatch, AppState} from '../../store/store'
 import {ProductType} from '../../types/product.type'
@@ -51,6 +51,7 @@ class CartPopup extends React.Component<CartPopupProps, CartPopupState> {
           <div className="cart-popup-buttons">
             <button
               onClick={() => {
+                this.props.dispatch(handleCart(false))
                 this.props.router.navigate('/cart')
               }}
             >

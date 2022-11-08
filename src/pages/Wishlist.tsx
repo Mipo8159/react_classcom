@@ -18,9 +18,9 @@ class Wishlist extends React.Component<CartPropsInterface, CartStateInterface> {
     return (
       <div className="cart-page">
         {/* EMPTY CART */}
-        {this.props.wishlist.wish.length === 0 && <div className="cart-empty">cart is empty</div>}
+        {this.props.wishlist.wish.length === 0 && <div className="cart-empty">wishlist is empty</div>}
 
-        <h1 className="cart-title">cart</h1>
+        <h1 className="cart-title">wishlist</h1>
 
         {/* ITEMS */}
         <div className="cart-items-map">

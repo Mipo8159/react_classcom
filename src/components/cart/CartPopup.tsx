@@ -42,7 +42,7 @@ class CartPopup extends React.Component<CartPopupProps, CartPopupState> {
         {this.props.cart.cart.length > 0 && (
           <div className="cart-popup-total">
             <h3>Total</h3>
-            <span>{this.props.cart.total.toFixed(2)}</span>
+            <span>{this.props.cart.total.toFixed(2)}$</span>
           </div>
         )}
 

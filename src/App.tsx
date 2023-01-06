@@ -6,6 +6,7 @@ import {CartState} from './store/cart/types/cart.state'
 import {AppDispatch, AppState} from './store/store'
 import {setWishlistOnLoad} from './store/wishlist/wishlist.reducer'
 import './styles/main.scss'
+import MessengerCustomerChat from 'react-messenger-customer-chat'
 
 interface AppPropsInterface {
   cart: CartState
@@ -35,6 +36,9 @@ class App extends React.Component<AppPropsInterface, AppStateInterface> {
         }}
       >
         <AppRouter />
+
+        {/* @ts-ignore */}
+        <MessengerCustomerChat pageId="100066578245102" appId="502538522017862" />
       </div>
     )
   }

@@ -56,7 +56,7 @@ class Products extends React.Component<ProductsProps, ProductsState> {
               onChange={(e) => {
                 this.setState({search: e.target.value})
               }}
-              placeholder="Search . . ."
+              placeholder="Search . ."
             />
 
             {this.state.search && this.props.product.searchProducts.length > 0 && (

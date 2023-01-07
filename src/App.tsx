@@ -38,7 +38,7 @@ class App extends React.Component<AppPropsInterface, AppStateInterface> {
         <AppRouter />
 
         {/* @ts-ignore */}
-        <MessengerCustomerChat pageId="100066578245102" appId="502538522017862" />
+        {/* <MessengerCustomerChat pageId="100066578245102" appId="502538522017862" /> */}
       </div>
     )
   }

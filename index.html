@@ -10,10 +10,9 @@
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
 
-    <!-- Messenger Chat plugin Code -->
-    <div id="fb-root"></div>
+    <!-- Your SDK code -->
+    <!-- <div id="fb-root"></div>
 
-    <!-- Your Chat plugin code -->
     <div id="fb-customer-chat" class="fb-customerchat"></div>
 
     <script>
@@ -22,7 +21,6 @@
       chatbox.setAttribute('attribution', 'biz_inbox')
     </script>
 
-    <!-- Your SDK code -->
     <script>
       window.fbAsyncInit = function () {
         FB.init({
@@ -30,7 +28,6 @@
           version: 'v15.0',
         })
       }
-
       ;(function (d, s, id) {
         var js,
           fjs = d.getElementsByTagName(s)[0]
@@ -40,6 +37,6 @@
         js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js'
         fjs.parentNode.insertBefore(js, fjs)
       })(document, 'script', 'facebook-jssdk')
-    </script>
+    </script> -->
   </body>
 </html>
